@@ -17,8 +17,8 @@ export default function ImageGallery({ searchImages }) {
   const [urlLarge, setUlrLarge] = useState('');
   const [title, setTitle] = useState('');
 
-  const prevPage = Previous(page);
-  const prevSearchImages = Previous(searchImages);
+  const prevPage = Prev(page);
+  const prevSearchImages = Prev(searchImages);
 
   const loadMore = () => {
     setPage(prevPage => prevPage + 1);
@@ -68,7 +68,7 @@ export default function ImageGallery({ searchImages }) {
     setUlrLarge('');
     setTitle('');
   };
-  function Previous(value) {
+  function Prev(value) {
     const prev = useRef();
     useEffect(() => {
       prev.current = value;
