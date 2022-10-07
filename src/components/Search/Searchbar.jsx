@@ -13,9 +13,9 @@ export default function Searchbar({ onSubmit }) {
     e.preventDefault();
     if (searchImages.trim() === '') {
       toast.warn('Enter a valid name');
+      setSearchImages('');
     }
     onSubmit(searchImages);
-    setSearchImages('');
   };
   return (
     <Header>

@@ -18,10 +18,11 @@ export default function ImageGallery({ searchImages }) {
   const [title, setTitle] = useState('');
 
   useEffect(() => {
+    if (!searchImages) {
+      setImages([]);
+      return;
+    }
     const fetchImages = async (currentName, currentPage) => {
-      if (!searchImages) {
-        return;
-      }
       try {
         setLoading(true);
         const result = await fetchRequest(currentName, currentPage);
