@@ -26,20 +26,22 @@ export default function ImageGallery({ searchImages }) {
         setLoading(true);
         const result = await fetchRequest(currentName, currentPage);
         const items = result.hits;
+        setImages(prevItems => {
+          return [...prevItems, ...items];
+        });
         if (items.length === 0) {
           return toast.warn(
             "We didn't find your request, please try again later"
           );
         }
-
-        setImages(prev => [...prev, ...items]);
       } catch (error) {
         setError(error);
       } finally {
         setLoading(false);
       }
     };
-    fetchImages();
+
+    fetchImages(searchImages, page);
   }, [searchImages, page]);
 
   const openModal = (urlLarge, title) => {
