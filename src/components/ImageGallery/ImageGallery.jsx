@@ -16,7 +16,10 @@ export default function ImageGallery({ searchImages }) {
 
   const [urlLarge, setUlrLarge] = useState('');
   const [title, setTitle] = useState('');
-
+  useEffect(() => {
+    setPage(1);
+    setImages([]);
+  }, [searchImages]);
   useEffect(() => {
     if (!searchImages) {
       setImages([]);
